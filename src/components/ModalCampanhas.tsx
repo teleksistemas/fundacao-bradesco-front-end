@@ -6,7 +6,7 @@ import type { Audience } from "@/service/interfaces/ResultGetAudience.interface"
 import type { Campaings } from "@/service/interfaces/ResultGetCamping.interface"
 import { useEffect, useState, useMemo } from "react"
 import toast from "react-hot-toast"
-import { LoaderCircle, Search, Filter, Eye } from "lucide-react"
+import { LoaderCircle, Search, Filter } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { GetTempletes } from "@/service/GetTempletes";
