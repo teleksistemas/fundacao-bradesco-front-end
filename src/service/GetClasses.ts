@@ -1,0 +1,27 @@
+import axios from "axios"
+
+export async function GetClasses(segment: string, classCode: string, serie: string) {
+    try {
+        const apiUrl = import.meta.env.VITE_API_URL;
+        const token = import.meta.env.VITE_TOKEN;
+
+        const token_acess = localStorage.getItem("token_access");
+        const { data } = await axios.get(
+            `${apiUrl}/api/v1/classes?segment=${segment}&classCode=${classCode}&serie=${serie}`,
+            {
+                headers: {
+                    Authorization: token,
+                    token_acess
+                }
+            }
+        );
+
+        return data;
+    } catch (e: any) {
+        return {
+            success: false,
+            message: "Erro interno no serviço de coletar os seguimentos da escola",
+            data: []
+        }
+    }
+}
