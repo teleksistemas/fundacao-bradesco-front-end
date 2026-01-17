@@ -17,8 +17,8 @@ interface DadosUser {
 
 export async function AuthAcess(token_fb: string) {
     try {
-        const apiUrl = import.meta.env.VITE_API_URL;
-        const token = import.meta.env.VITE_TOKEN;
+        const apiUrl = import.meta.env.VITE_API_URL || "https://area-teste-group-atende-be.nijpgo.easypanel.host";
+        const token = import.meta.env.VITE_TOKEN || "KgretqCgGW1YSlQzV9rGb3byMfR25ArWJ93LbzPvbdz22uFdtifd9RYXHkqiE";
         console.log(token)
         console.log(apiUrl)
 
@@ -36,7 +36,7 @@ export async function AuthAcess(token_fb: string) {
         console.log(data)
 
         const dados: ResultApiACess = data
-        if(data.data.Nome){
+        if (data.data.Nome) {
             localStorage.setItem("nome_user", data.data.Nome);
             localStorage.setItem("escola_user", data.data.Escola);
         }
