@@ -17,17 +17,12 @@ interface DadosUser {
 
 export async function AuthAcess(token_fb: string) {
     try {
-        const apiUrl = import.meta.env.VITE_API_URL || "https://area-teste-group-atende-be.nijpgo.easypanel.host";
-        const token = import.meta.env.VITE_TOKEN || "KgretqCgGW1YSlQzV9rGb3byMfR25ArWJ93LbzPvbdz22uFdtifd9RYXHkqiE";
-        console.log(token)
-        console.log(apiUrl)
-
         const { data } = await axios.post(
-            `${apiUrl}/api/v1/login`,
+            `https://area-teste-group-atende-be.nijpgo.easypanel.host/api/v1/login`,
             {},
             {
                 headers: {
-                    Authorization: token,
+                    Authorization: "KgretqCgGW1YSlQzV9rGb3byMfR25ArWJ93LbzPvbdz22uFdtifd9RYXHkqiE",
                     token_fb: token_fb
                 }
             }
