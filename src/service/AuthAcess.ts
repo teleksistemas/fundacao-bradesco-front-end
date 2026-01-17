@@ -16,9 +16,12 @@ interface DadosUser {
 }
 
 export async function AuthAcess(token_fb: string) {
+
     try {
+        const rota = "https://area-teste-group-atende-be.nijpgo.easypanel.host/api/v1/login"
+        console.log(rota)
         const { data } = await axios.post(
-            `https://area-teste-group-atende-be.nijpgo.easypanel.host/api/v1/login`,
+            rota,
             {},
             {
                 headers: {
