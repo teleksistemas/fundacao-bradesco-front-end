@@ -26,8 +26,8 @@ const responsavelSchema = z.object({
   mobileNumber: z
     .string()
     .transform((val) => val.replace(/\D/g, "")) // 👈 LIMPA TUDO QUE NÃO É NÚMERO
-    .refine((val) => val.length === 10 || val.length === 11, {
-      message: "Informe um celular válido com DDD (10 ou 11 dígitos)",
+    .refine((val) => val.length === 10 || val.length === 12 || val.length === 13, {
+      message: "Informe um celular válido com DDI e DDD + (10 ou 11 dígitos)",
     }),
   cpf: z
     .string()
