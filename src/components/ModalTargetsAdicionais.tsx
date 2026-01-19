@@ -23,12 +23,22 @@ import {
 
 const responsavelSchema = z.object({
   name: z.string().min(3, "Nome é obrigatório"),
-  mobileNumber: z.string().min(10, "Telefone inválido"),
-  cpf: z.string().length(11, "CPF deve ter 11 dígitos"),
+  mobileNumber: z
+    .string()
+    .transform((val) => val.replace(/\D/g, "")) // 👈 LIMPA TUDO QUE NÃO É NÚMERO
+    .refine((val) => val.length === 10 || val.length === 11, {
+      message: "Informe um celular válido com DDD (10 ou 11 dígitos)",
+    }),
+  cpf: z
+    .string()
+    .transform((val) => val.replace(/\D/g, "")) // 👈 LIMPA TUDO QUE NÃO É NÚMERO
+    .refine((val) => val.length === 11, {
+      message: "Informe um CPF válido",
+    }),
 });
 
 const studentSchema = z.object({
-  rm: z.string().min(1, "RM obrigatório"),
+  rm: z.string().min(3, "RM obrigatório"),
   name: z.string().min(3, "Nome do aluno obrigatório"),
   email: z.string().email("E-mail inválido"),
   serie: z.string().min(1, "Série obrigatória"),

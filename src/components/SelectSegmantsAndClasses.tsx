@@ -181,6 +181,18 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
 
                         // Iterar por todas as séries e classes
                         for (const serieGroup of serieGroups) {
+                          // Adicionar/remover a série do selectedSeries
+                          const serieKey = getSerieKey(segmento.segmentCode, serieGroup.serieType)
+                          if (checked) {
+                            setSelectedSeries((prev) => new Set(prev).add(serieKey))
+                          } else {
+                            setSelectedSeries((prev) => {
+                              const newSet = new Set(prev)
+                              newSet.delete(serieKey)
+                              return newSet
+                            })
+                          }
+
                           for (const cls of serieGroup.classes) {
                             const classKey = getClassKey(segmento.segmentCode, serieGroup.serieType, cls.classCode)
 

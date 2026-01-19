@@ -18,10 +18,10 @@ interface DadosUser {
 export async function AuthAcess(token_fb: string) {
 
     try {
-        const rota = "https://area-teste-group-atende-be.nijpgo.easypanel.host/api/v1/login"
+        const rota = import.meta.env.VITE_API_URL ?? "https://area-teste-group-atende-be.nijpgo.easypanel.host"
         console.log(rota)
         const { data } = await axios.post(
-            rota,
+            `${rota}/api/v1/login`,
             {},
             {
                 headers: {

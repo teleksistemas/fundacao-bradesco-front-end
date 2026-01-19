@@ -380,14 +380,14 @@ export default function ModalCampanhas() {
                                                         onClick={(e) => e.stopPropagation()}
                                                         onPointerDown={(e) => e.stopPropagation()}
                                                         onKeyDown={(e) => e.stopPropagation()}
-                                                        className="flex gap-1 items-center justify-center"
+                                                        className="flex gap-1 items-center justify-center cursor-pointer"
                                                     >Modelo de mensagem (HSM): <span className="font-bold ml-1!">{c.modelo_mensagem}</span></PopoverTrigger>
                                                     <PopoverContent>
                                                         <div
                                                             className="w-full h-auto p-2! bg-center bg-cover rounded-lg"
                                                             style={{ backgroundImage: `url("${imagem}")` }}
                                                         >
-                                                            <div className="w-full p-3! bg-white/90 rounded-lg shadow-md whitespace-pre-wrap text-sm">{filterBodyMessage(c.modelo_mensagem)}</div>
+                                                            <div className="w-full p-3! bg-white/90 rounded-lg shadow-md text-sm">{filterBodyMessage(c.modelo_mensagem)}</div>
                                                         </div>
                                                     </PopoverContent>
                                                 </Popover>
