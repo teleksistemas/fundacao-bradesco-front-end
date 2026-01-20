@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import type { ResultGetSegments, Segments, School } from "@/service/interfaces/ResultGetSegments.interface"
+import type { School } from "@/service/interfaces/ResultGetSegments.interface"
 import {
   Popover,
   PopoverContent,
@@ -62,7 +62,6 @@ export default function ModalTargetsAdicionais({
 }: Props) {
   const [targetsAdicionaisModal, setTargetsAdicionaisModal] =
     useState<Target[]>(targetsAdicionais);
-  const [segment, setSegment] = useState<Segments>()
 
   const [stepModal, setStepModal] = useState<number>(1);
   const [erros, setErros] = useState<string[]>([]);
