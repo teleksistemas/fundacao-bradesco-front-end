@@ -171,12 +171,12 @@ export default function ModalTargetsAdicionais({
         <PopoverContent className="w-105 p-4!">
           <h1 className="font-bold mb-2!">
             {stepModal === 1
-              ? "Novo target adicional - Responsável"
+              ? "Novo contato adicional - Responsável"
               : "Dados do aluno"}
           </h1>
 
           <p className="text-sm text-muted-foreground mb-2">
-            Para adicionar targets à sua lista de disparo, preencha os dados abaixo.
+            Para adicionar contato à sua lista de disparo, preencha os dados abaixo.
           </p>
 
           {erros.length > 0 && (
@@ -348,7 +348,7 @@ export default function ModalTargetsAdicionais({
               </TooltipTrigger>
 
               <TooltipContent>
-                <p className="p-2!">Remover target da lista</p>
+                <p className="p-2!">Remover contato da lista</p>
               </TooltipContent>
             </Tooltip>
           </div>
