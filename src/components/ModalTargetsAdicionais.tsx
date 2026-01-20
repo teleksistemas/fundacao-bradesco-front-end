@@ -10,12 +10,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
+import type { ResultGetSegments, Segments, School } from "@/service/interfaces/ResultGetSegments.interface"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import SelectClasseAndSegmentsNewTarget from "@/components/SelectClasseAndSegmentsNewTarget";
 
 /* ===========================
    SCHEMAS ZOD
@@ -61,6 +62,7 @@ export default function ModalTargetsAdicionais({
 }: Props) {
   const [targetsAdicionaisModal, setTargetsAdicionaisModal] =
     useState<Target[]>(targetsAdicionais);
+  const [segment, setSegment] = useState<Segments>()
 
   const [stepModal, setStepModal] = useState<number>(1);
   const [erros, setErros] = useState<string[]>([]);
@@ -113,7 +115,7 @@ export default function ModalTargetsAdicionais({
 
     const novoTarget: Target = {
       name: responsavel.name,
-      mobileNumber: responsavel.mobileNumber,
+      mobileNumber: (responsavel.mobileNumber.length <= 11 && responsavel.mobileNumber.length >= 10) ? `55${responsavel.mobileNumber}` : responsavel.mobileNumber,
       cpf: responsavel.cpf,
       student: {
         rm: student.rm,
@@ -156,6 +158,10 @@ export default function ModalTargetsAdicionais({
 
     setTargetsAdicionaisModal(novaLista);
     listaDeTragets(novaLista);
+  }
+
+  function setClasseNewtarget(dados: School) {
+    setStudent({ ...student, serie: dados.serie, classCode: dados.classCode, description: dados.description })
   }
 
   return (
@@ -268,16 +274,17 @@ export default function ModalTargetsAdicionais({
 
               <div className="mt-3!">
                 <Label className="mb-1!">Série do aluno</Label>
-                <Input
+                <SelectClasseAndSegmentsNewTarget setClasse={setClasseNewtarget} />
+                {/* <Input
                   className="p-2!"
                   value={student.serie}
                   onChange={(e) =>
                     setStudent({ ...student, serie: e.target.value })
                   }
-                />
+                /> */}
               </div>
 
-              <div className="mt-3!">
+              {/* <div className="mt-3!">
                 <Label className="mb-1!">Código da classe</Label>
                 <Input
                   className="p-2!"
@@ -303,7 +310,7 @@ export default function ModalTargetsAdicionais({
                     })
                   }
                 />
-              </div>
+              </div> */}
 
               <div className="flex gap-2 mt-3!">
                 <Button variant="destructive" className="p-2!" onClick={adicionarTarget}>

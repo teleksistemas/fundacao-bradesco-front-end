@@ -4,17 +4,17 @@ import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select"
 
 interface Props {
-    setTemplateDefinido: (template: TemplateWhatsapp) => void;
+  setTemplateDefinido: (template: TemplateWhatsapp) => void;
 }
 
 export default function SelectTemplete({ setTemplateDefinido }: Props) {
@@ -52,11 +52,12 @@ export default function SelectTemplete({ setTemplateDefinido }: Props) {
             Lista dos templates ativos
           </SelectLabel>
 
-          {templetes.map(templete => (
-            <SelectItem key={templete.id} value={templete.id}>
-              {templete.name}
-            </SelectItem>
-          ))}
+          {templetes.sort((a, b) => a.name.localeCompare(b.name))
+            .map(templete => (
+              <SelectItem key={templete.id} value={templete.id}>
+                {templete.name}
+              </SelectItem>
+            ))}
         </SelectGroup>
       </SelectContent>
     </Select>
