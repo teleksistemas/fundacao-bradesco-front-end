@@ -179,7 +179,11 @@ export default function ModalCampanhas() {
             }
         }
 
-        const textFormated = renderFormattedText(messageText)
+        let mensagemSemChaves = messageText
+            .replace(/{{/g, "[**")
+            .replace(/}}/g, "**]")
+
+        const textFormated = renderFormattedText(mensagemSemChaves)
         return textFormated;
     }
 
