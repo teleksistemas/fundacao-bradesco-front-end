@@ -24,6 +24,7 @@ export default function Dashboard() {
     const [targetsAdicionais, setTargetsAdicionais] = useState<Target[]>([])
     const [listaDeVariaveis, setListaDeVariaveis] = useState<string[]>([]);
     const [variblesCompleted, setVariblesCompleted] = useState<boolean>(false);
+    const [modeloMensagem, setModeloMensagem] = useState<string>("");
     const [buttonSendIsVisible, setButtonSendIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
@@ -45,12 +46,12 @@ export default function Dashboard() {
                     <span className="w-full text-center flex items-center justify-center text-sm">Quantidades de contatos selecionado para disparo {[...targets, ...targetsAdicionais].length}</span>
                     <Separator orientation="horizontal" />
                     <SelectTemplete setTemplateDefinido={(dadosTemplateSelecionado: TemplateWhatsapp) => setTemplate(dadosTemplateSelecionado)} />
-                    <ModalMensagem setListaDeVariaveis={(lista: string[]) => (setListaDeVariaveis(lista))} setVariblesCompleted={(completed: boolean) => (setVariblesCompleted(completed))} template={template} />
+                    <ModalMensagem setModeloMensagemDefinido={((mensagem:string) => setModeloMensagem(mensagem))} setListaDeVariaveis={(lista: string[]) => (setListaDeVariaveis(lista))} setVariblesCompleted={(completed: boolean) => (setVariblesCompleted(completed))} template={template} />
                     <Separator orientation="horizontal" className="mt-2!" />
                     <div className="w-full h-full flex justify-center items-start">
                         <Button
                             disabled={!buttonSendIsVisible}
-                            onClick={() => { ModelarEnvioDeDisparo([...targets, ...targetsAdicionais], template, listaDeVariaveis) }}
+                            onClick={() => { ModelarEnvioDeDisparo([...targets, ...targetsAdicionais], template, listaDeVariaveis, modeloMensagem) }}
                             className="p-2! bg-destructive! hover:bg-destructive/70! cursor-pointer shadow-lg">
                             Disparar mensagens
                         </Button>

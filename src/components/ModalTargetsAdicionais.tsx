@@ -32,11 +32,42 @@ const responsavelSchema = z.object({
     }),
   cpf: z
     .string()
-    .transform((val) => val.replace(/\D/g, "")) // 👈 LIMPA TUDO QUE NÃO É NÚMERO
-    .refine((val) => val.length === 11, {
+    .transform((val) => val.replace(/\D/g, "")) // limpa máscara
+    .refine((val) => isValidCPF(val), {
       message: "Informe um CPF válido",
     }),
 });
+
+function isValidCPF(cpf: string): boolean {
+  // Remove tudo que não é número
+  cpf = cpf.replace(/\D/g, "");
+
+  // Deve ter 11 dígitos
+  if (cpf.length !== 11) return false;
+
+  // Elimina CPFs com todos os dígitos iguais (111.111.111-11, etc)
+  if (/^(\d)\1+$/.test(cpf)) return false;
+
+  // Validação do primeiro dígito verificador
+  let sum = 0;
+  for (let i = 0; i < 9; i++) {
+    sum += Number(cpf[i]) * (10 - i);
+  }
+  let firstDigit = (sum * 10) % 11;
+  if (firstDigit === 10) firstDigit = 0;
+  if (firstDigit !== Number(cpf[9])) return false;
+
+  // Validação do segundo dígito verificador
+  sum = 0;
+  for (let i = 0; i < 10; i++) {
+    sum += Number(cpf[i]) * (11 - i);
+  }
+  let secondDigit = (sum * 10) % 11;
+  if (secondDigit === 10) secondDigit = 0;
+  if (secondDigit !== Number(cpf[10])) return false;
+
+  return true;
+}
 
 const studentSchema = z.object({
   rm: z.string().min(3, "RM obrigatório"),

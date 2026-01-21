@@ -11,6 +11,7 @@ interface Props {
     template: TemplateWhatsapp | null
     setListaDeVariaveis: (variaveis: string[]) => void;
     setVariblesCompleted: (completed: boolean) => void;
+    setModeloMensagemDefinido: (mensagem: string) => void;
 }
 
 interface VariableField {
@@ -20,7 +21,7 @@ interface VariableField {
 }
 
 export default function ModalMensagem(props: Props) {
-    const [variables, setVariables] = useState<VariableField[]>([])
+    const [variables, setVariables] = useState<VariableField[]>([]);
 
     useEffect(() => {
         const variaveisMapeadas = variables.map((v) => v.value);
@@ -70,7 +71,7 @@ export default function ModalMensagem(props: Props) {
          
             formattedText = formattedText.replace(placeholder, `**${displayValue}**`)
         })
-
+        props.setModeloMensagemDefinido(formattedText)
         return formattedText
     }
 

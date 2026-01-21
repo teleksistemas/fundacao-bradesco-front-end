@@ -3,9 +3,9 @@ import type { Target } from "@/service/interfaces/Targets.interface";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-export async function ModelarEnvioDeDisparo(listaDeTargets: Target[], templete: TemplateWhatsapp | null, listaDeVariaveis: string[]) {
+export async function ModelarEnvioDeDisparo(listaDeTargets: Target[], templete: TemplateWhatsapp | null, listaDeVariaveis: string[], modeloMensagem: string) {
     try {
-
+        console.log(modeloMensagem)
         if (!templete) {
             toast.error("Necessario ter um templete selecionado")
             return;
@@ -26,7 +26,8 @@ export async function ModelarEnvioDeDisparo(listaDeTargets: Target[], templete: 
             },
             "nameTamplate": templete.name,
             "token_acess": token_acess,
-            "usuario_name": nome_user ?? "Usuario não indentificado"
+            "usuario_name": nome_user ?? "Usuario não indentificado",
+            "templateModelo": modeloMensagem
         }
 
 

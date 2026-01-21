@@ -6,7 +6,7 @@ import type { Audience } from "@/service/interfaces/ResultGetAudience.interface"
 import type { Campaings } from "@/service/interfaces/ResultGetCamping.interface"
 import { useEffect, useState, useMemo } from "react"
 import toast from "react-hot-toast"
-import { LoaderCircle, Search, Filter } from "lucide-react"
+import { LoaderCircle, Search, Filter, MessageCircleQuestionMark } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { GetTempletes } from "@/service/GetTempletes";
@@ -207,7 +207,6 @@ export default function ModalCampanhas() {
         })
     }
 
-
     return (
         <div className="w-full  space-y-4!">
             <div className="bg-card rounded-lg border border-border p-4! shadow-lg">
@@ -375,22 +374,30 @@ export default function ModalCampanhas() {
                                     <div className="w-full h-full gap-1! flex justify-start items-start">
                                         <div className="w-auto h-full p-2! flex flex-col justify-start items-center gap-2">
                                             <div className="w-full">
-                                                <Popover>
-                                                    <PopoverTrigger
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        onPointerDown={(e) => e.stopPropagation()}
-                                                        onKeyDown={(e) => e.stopPropagation()}
-                                                        className="flex gap-1 items-center justify-center cursor-pointer"
-                                                    >Modelo de mensagem (HSM): <span className="font-bold ml-1!">{c.modelo_mensagem}</span></PopoverTrigger>
-                                                    <PopoverContent>
-                                                        <div
-                                                            className="w-full h-auto p-2! bg-center bg-cover rounded-lg"
-                                                            style={{ backgroundImage: `url("${imagem}")` }}
+                                                <div className="w-full flex gap-2 justify-start items-center">
+                                                    <span>Modelo de mensagem (HSM): <span className="font-bold ml-1!">{c.modelo_mensagem}</span></span>
+                                                    <Popover>
+                                                        <PopoverTrigger
+                                                            onClick={(e) => e.stopPropagation()}
+                                                            onPointerDown={(e) => e.stopPropagation()}
+                                                            onKeyDown={(e) => e.stopPropagation()}
+                                                            className="flex gap-1 items-center justify-center cursor-pointer"
                                                         >
-                                                            <div className="w-full p-3! bg-white/90 rounded-lg shadow-md text-sm">{filterBodyMessage(c.modelo_mensagem)}</div>
-                                                        </div>
-                                                    </PopoverContent>
-                                                </Popover>
+                                                            <span>
+                                                                <MessageCircleQuestionMark className="text-green-500" />
+                                                            </span>
+
+                                                        </PopoverTrigger>
+                                                        <PopoverContent>
+                                                            <div
+                                                                className="w-full h-auto p-2! bg-center bg-cover rounded-lg"
+                                                                style={{ backgroundImage: `url("${imagem}")` }}
+                                                            >
+                                                                <div className="w-full p-3! bg-white/90 rounded-lg shadow-md text-sm">{c.template_modelo ? renderFormattedText(c.template_modelo) : filterBodyMessage(c.modelo_mensagem)}</div>
+                                                            </div>
+                                                        </PopoverContent>
+                                                    </Popover>
+                                                </div>
                                                 <h1>Usuario que fez disparo: <span className="font-bold">{c.name_user}</span></h1>
                                                 <h1>Data e hora de envio: <span className="font-bold">{new Date(c.data_envio).toLocaleString("pt-BR", {
                                                     dateStyle: "short",

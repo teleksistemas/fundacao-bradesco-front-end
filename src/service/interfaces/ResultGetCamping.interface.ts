@@ -18,6 +18,7 @@ export interface Campaings {
     finalizada: false,
     ultima_verificacao: Date,
     criado_em: Date,
-    atualizado_em: Date
-    name_user?: string
+    atualizado_em: Date,
+    name_user?: string,
+    template_modelo?: string
 }
