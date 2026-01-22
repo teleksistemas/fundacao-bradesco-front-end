@@ -7,7 +7,7 @@ import type { Classes, Parents } from "@/service/interfaces/ResultGetClasses.int
 import type { Target } from "@/service/interfaces/Targets.interface.ts"
 
 import { Checkbox } from "@/components/ui/checkbox"
-import { LoaderCircle, GraduationCap, User, BookOpen, Layers } from "lucide-react"
+import { LoaderCircle, GraduationCap, User, BookOpen, Layers, Phone } from "lucide-react"
 import toast from "react-hot-toast"
 import { useState, useEffect } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -137,6 +137,23 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
       </div>
     )
   }
+
+  function formatarTelefone(numero: string): string {
+    // Remove qualquer coisa que não seja número (segurança extra)
+    const limpo = numero.replace(/\D/g, "");
+
+    // Verifica se tem 11 dígitos (DDD + 9 dígitos)
+    if (limpo.length !== 11) {
+      return "Número inválido";
+    }
+
+    const ddd = limpo.slice(0, 2);
+    const parte1 = limpo.slice(2, 7);
+    const parte2 = limpo.slice(7, 11);
+
+    return `(${ddd}) ${parte1}-${parte2}`;
+  }
+
 
   return (
     <div className="min-w-full max-w-xl mx-auto p-4!">
@@ -524,7 +541,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                                   </div>
                                                   <div className="flex flex-col">
                                                     <span className="font-medium text-xs">{parent.name}</span>
-                                                    <span className="text-xs text-gray-500">{parent.cpf}</span>
+                                                    <span className="text-xs text-gray-500 flex gap-1">Telefone: {formatarTelefone(parent.mobileNumber)}</span>
                                                   </div>
                                                 </div>
                                                 <Checkbox
