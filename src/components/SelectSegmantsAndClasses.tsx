@@ -7,7 +7,7 @@ import type { Classes, Parents } from "@/service/interfaces/ResultGetClasses.int
 import type { Target } from "@/service/interfaces/Targets.interface.ts"
 
 import { Checkbox } from "@/components/ui/checkbox"
-import { LoaderCircle, GraduationCap, User, BookOpen, Layers, Phone } from "lucide-react"
+import { LoaderCircle, GraduationCap, User, BookOpen, Layers } from "lucide-react"
 import toast from "react-hot-toast"
 import { useState, useEffect } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
