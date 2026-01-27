@@ -2,8 +2,7 @@ export interface Target {
     cpf: string
     mobileNumber: string
     name: string
-
-    student: {
+    student?: {
         rm: string
         name: string
         email: string
@@ -11,4 +10,9 @@ export interface Target {
         classCode: string
         description: string
     }
+    rm?: string
+    email?: string
+    serie?: string
+    classCode?: string
+    description?: string
 }
