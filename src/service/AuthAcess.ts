@@ -30,6 +30,8 @@ export async function AuthAcess(token_fb: string) {
             }
         );
 
+        console.log(data)
+
         const dados: ResultApiACess = data
         if (data.data.Nome) {
             localStorage.setItem("nome_user", data.data.Nome);
@@ -40,7 +42,7 @@ export async function AuthAcess(token_fb: string) {
             localStorage.setItem("token_access", dados.token_access);
             return true;
         };
-        return false;
+        return true;
     } catch (e: any) {
         return false;
     }
