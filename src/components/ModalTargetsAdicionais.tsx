@@ -369,8 +369,8 @@ export default function ModalTargetsAdicionais({
             <span className="flex gap-2 items-center text-sm">
               <UsersRound size={20} /> {t.name} -
               <PhoneIncoming size={18} /> {t.mobileNumber} -
-              <User size={20} /> {t.student.name} -
-              <GraduationCap size={20} /> {t.student.description}
+              <User size={20} /> {t.student?.name} -
+              <GraduationCap size={20} /> {t.student?.description}
             </span>
 
             <Tooltip>

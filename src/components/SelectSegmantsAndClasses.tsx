@@ -12,15 +12,6 @@ import toast from "react-hot-toast"
 import { useState, useEffect } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-interface Student {
-  rm: string
-  name: string
-  email: string | null
-  serie: string
-  classCode: string
-  description: string
-}
-
 interface Props {
   listaDeTragets: (template: Target[]) => void
 }
@@ -53,7 +44,6 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
   const [selectedClasses, setSelectedClasses] = useState<Set<string>>(new Set())
   const [selectedParents, setSelectedParents] = useState<Set<string>>(new Set())
   const [selectedStudents, setSelectedStudents] = useState<Set<string>>(new Set())
-  const [hasParents, setHasParents] = useState<boolean>(true)
 
   useEffect(() => {
     listaDeTragets(targets)
@@ -110,11 +100,6 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
 
   function hasParentsInData(parents: Parents[]): boolean {
     return parents && parents.length > 0 && parents[0] && "cpf" in parents[0]
-  }
-
-  function isDirectStudent(obj: any): boolean {
-    // Verifica se é um aluno direto (sem responsável)
-    return obj && "rm" in obj && !("cpf" in obj)
   }
 
   const getSegmentKey = (segmentCode: string) => `segment-${segmentCode}`
