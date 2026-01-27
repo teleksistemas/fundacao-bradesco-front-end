@@ -4,6 +4,7 @@ export async function GetCampaings() {
     try {
         const token_acess = localStorage.getItem("token_access");
         const rota = import.meta.env.VITE_API_URL ?? "https://area-teste-group-atende-be.nijpgo.easypanel.host"
+        console.log(`${rota}/api/v1/campaings`)
         const { data } = await axios.get(
             `${rota}/api/v1/campaings`,
             {

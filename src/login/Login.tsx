@@ -12,7 +12,6 @@ export default function Login() {
 
   const validarAcesso = async (tk: string) => {
     const resultAcess: boolean = await AuthAcess(tk);
-    console.log(resultAcess)
     if (resultAcess) {
       navigate("/dashboard");
       return;

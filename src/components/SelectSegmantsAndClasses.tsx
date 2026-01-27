@@ -66,7 +66,6 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
       }
       const result: Classes = await GetClasses(segmentSelecionado.segmentCode, classe.classCode, classe.serie)
       await setTimeout(() => {
-        console.log("Time para forçar espera")
       }, 5000)
       setIsloopingGetClass(false);
       setClasses(Array.isArray(result.data) ? result.data : [result.data]);

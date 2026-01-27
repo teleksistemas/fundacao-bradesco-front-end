@@ -5,7 +5,6 @@ import axios from "axios";
 
 export async function ModelarEnvioDeDisparo(listaDeTargets: Target[], templete: TemplateWhatsapp | null, listaDeVariaveis: string[], modeloMensagem: string) {
     try {
-        console.log(modeloMensagem)
         if (!templete) {
             toast.error("Necessario ter um templete selecionado")
             return;
@@ -43,7 +42,6 @@ export async function ModelarEnvioDeDisparo(listaDeTargets: Target[], templete: 
                 }
             }
         )
-        console.log(data)
         toast.success(data.message);
 
     } catch (e) {

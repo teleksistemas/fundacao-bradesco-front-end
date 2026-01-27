@@ -19,7 +19,6 @@ export async function AuthAcess(token_fb: string) {
 
     try {
         const rota = import.meta.env.VITE_API_URL ?? "https://area-teste-group-atende-be.nijpgo.easypanel.host"
-        console.log(rota)
         const { data } = await axios.post(
             `${rota}/api/v1/login`,
             {},
@@ -30,8 +29,6 @@ export async function AuthAcess(token_fb: string) {
                 }
             }
         );
-
-        console.log(data)
 
         const dados: ResultApiACess = data
         if (data.data.Nome) {
