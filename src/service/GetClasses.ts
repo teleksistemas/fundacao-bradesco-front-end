@@ -1,11 +1,11 @@
 import axios from "axios"
 
-export async function GetClasses(segment: string, classCode: string, serie: string) {
+export async function GetClasses(segment: string, classCode: string, serie: string, description: string) {
     try {
         const token_acess = localStorage.getItem("token_access");
         const rota = import.meta.env.VITE_API_URL ?? "https://area-teste-group-atende-be.nijpgo.easypanel.host"
         const { data } = await axios.get(
-            `${rota}/api/v1/classes?segment=${segment}&classCode=${classCode}&serie=${serie}`,
+            `${rota}/api/v1/classes?segment=${segment}&classCode=${classCode}&serie=${serie}&description=${description}`,
             {
                 headers: {
                     Authorization: "KgretqCgGW1YSlQzV9rGb3byMfR25ArWJ93LbzPvbdz22uFdtifd9RYXHkqiE",

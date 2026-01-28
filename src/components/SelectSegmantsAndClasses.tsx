@@ -64,7 +64,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
         setIsloopingGetClass(false)
         return
       }
-      const result: Classes = await GetClasses(segmentSelecionado.segmentCode, classe.classCode, classe.serie)
+      const result: Classes = await GetClasses(segmentSelecionado.segmentCode, classe.classCode, classe.serie, classe.description)
       await setTimeout(() => {
       }, 5000)
       setIsloopingGetClass(false);
@@ -251,7 +251,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                               })
                             }
 
-                            const res = await GetClasses(segmento.segmentCode, cls.classCode, cls.serie)
+                            const res = await GetClasses(segmento.segmentCode, cls.classCode, cls.serie, cls.description)
 
                             res.data.forEach((p: Parents) => {
                               p.students.forEach((st) => {
@@ -385,7 +385,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                       })
                                     }
 
-                                    const res = await GetClasses(segmento.segmentCode, cls.classCode, cls.serie)
+                                    const res = await GetClasses(segmento.segmentCode, cls.classCode, cls.serie, cls.description)
 
                                     res.data.forEach((p: Parents) => {
                                       p.students.forEach((st) => {
@@ -495,6 +495,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                             segmento.segmentCode,
                                             classItem.classCode,
                                             classItem.serie,
+                                            classItem.description
                                           )
 
                                           if (checked) {
