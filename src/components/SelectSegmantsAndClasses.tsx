@@ -276,7 +276,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                   const target: Target = {
                                     cpf: p.cpf,
                                     name: p.name,
-                                    mobileNumber: p.mobileNumber,
+                                    mobileNumber: `55${p.mobileNumber}`,
                                     student: {
                                       rm: st.rm,
                                       name: st.name,
@@ -410,7 +410,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                           const target: Target = {
                                             cpf: p.cpf,
                                             name: p.name,
-                                            mobileNumber: p.mobileNumber,
+                                            mobileNumber: `55${p.mobileNumber}`,
                                             student: {
                                               rm: st.rm,
                                               name: st.name,
@@ -523,7 +523,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                                 const target: Target = {
                                                   cpf: p.cpf,
                                                   name: p.name,
-                                                  mobileNumber: p.mobileNumber,
+                                                  mobileNumber: `55${p.mobileNumber}`,
                                                   student: {
                                                     rm: st.rm,
                                                     name: st.name,
@@ -664,7 +664,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                                                 const target: Target = {
                                                                   cpf: parent.cpf,
                                                                   name: parent.name,
-                                                                  mobileNumber: parent.mobileNumber,
+                                                                  mobileNumber: `55${parent.mobileNumber}`,
                                                                   student: {
                                                                     rm: group.student.rm,
                                                                     name: group.student.name,
@@ -744,7 +744,7 @@ export default function SelectSegmentsAndClassesTree({ listaDeTragets }: Props) 
                                                                     const target: Target = {
                                                                       cpf: parent.cpf,
                                                                       name: parent.name,
-                                                                      mobileNumber: parent.mobileNumber,
+                                                                      mobileNumber: `55${parent.mobileNumber}`,
                                                                       student: {
                                                                         rm: group.student.rm,
                                                                         name: group.student.name,
